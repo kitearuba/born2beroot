@@ -1,6 +1,4 @@
----
-
-# 🛡️ Born2BeRoot
+# 🛡️ **Born2BeRoot**
 
 ## 📝 Project Overview
 
@@ -8,48 +6,54 @@
 
 ## 📋 Table of Contents
 
-1. [Pre-requisites](#️-pre-requisites)
-2. [Project Structure](#️-project-structure)
-3. [Mandatory Part](#️-mandatory-part)
-4. [Bonus Part](#️-bonus-part)
-5. [Scripts](#️-scripts)
-6. [Project Delivery and Evaluation](#️-project-delivery-and-evaluation)
-7. [Resources](#️-resources)
+1. [⚙️ Pre-requisites](#️-pre-requisites)
+2. [🏗️ Project Structure](#️-project-structure)
+3. [🔧 Mandatory Part](#️-mandatory-part)
+4. [✨ Bonus Part](#️-bonus-part)
+5. [🖥️ Scripts](#️-scripts)
+6. [🚀 Project Delivery and Evaluation](#️-project-delivery-and-evaluation)
+7. [📚 Resources](#️-resources)
 
 ## ⚙️ Pre-requisites
 
-- 🖥️ VirtualBox or UTM (if VirtualBox doesn't work)
-- 🛠️ Latest stable version of **Debian** or **Rocky Linux**
-- 📚 Basic understanding of Linux command line and system administration
+- 🖥️ **Virtualization Software**: VirtualBox or UTM (if VirtualBox doesn't work)
+- 🛠️ **Operating System**: Latest stable version of **Debian** or **Rocky Linux**
+- 📚 **Knowledge**: Basic understanding of Linux command line and system administration
 
 ## 🏗️ Project Structure
 
-- **Virtual Machine**: Create a virtual machine using VirtualBox or UTM.
-- **System Configuration**: Configure your server following strict rules.
-- **Security**: Implement strong password policies, configure `sudo` and `SSH`, and set up a firewall.
+- **Virtual Machine**: Create and configure a virtual machine using VirtualBox or UTM.
+- **System Configuration**: Follow strict rules to configure your server.
+- **Security**: Implement security measures such as strong password policies, configuring `sudo` and `SSH`, and setting up a firewall.
 
 ## 🔧 Mandatory Part
 
 1. **Operating System**:
    - Use the latest stable version of Debian or Rocky Linux.
-   - Configure the system without any graphical interface (No X.org or similar).
+   - No graphical interface allowed (No X.org or similar).
 
 2. **Partitioning**:
    - Create at least 2 encrypted partitions using LVM.
 
 3. **Security Policies**:
-   - Implement a strong password policy (minimum length, expiration, complexity).
-   - Configure `sudo` with specific rules.
+   - Implement a strong password policy:
+     - Minimum length of 10 characters
+     - Must contain a number and an uppercase letter
+     - Password expires every 30 days
+   - Configure `sudo` with:
+     - Limited authentication attempts
+     - Custom error message for incorrect passwords
+     - Log all `sudo` commands
    - Install and configure the SSH service on port `4242` with restricted root access.
 
 4. **Firewall**:
-   - Configure `ufw` for Debian or `firewalld` for Rocky, allowing only necessary ports.
+   - Configure `ufw` for Debian or `firewalld` for Rocky Linux, allowing only necessary ports.
 
 5. **Hostname**:
    - Set the hostname to your login followed by "42" (e.g., `user42`).
 
 6. **Monitoring Script**:
-   - Create a script named `monitoring.sh` that displays system information every 10 minutes using the `wall` command. The information should include:
+   - Create a script named `monitoring.sh` that displays system information every 10 minutes using the `wall` command. It should display:
      - OS architecture and kernel version
      - Number of physical and virtual cores
      - RAM usage and available disk space
@@ -63,7 +67,7 @@
 ## ✨ Bonus Part
 
 1. **Advanced Partitioning**:
-   - Configure partitions to obtain a specific structure as required.
+   - Configure partitions to achieve a specified structure.
 
 2. **Web Server**:
    - Set up a functional WordPress site using `lighttpd`, `MariaDB`, and `PHP`.
@@ -108,21 +112,19 @@ echo "#Sudo : $sudo_commands cmd"
 
 ## 🚀 Project Delivery and Evaluation
 
-- 📁 Submit only a `signature.txt` file in the root of your repository.
-- 📝 This file should contain the SHA-1 signature of your virtual disk.
-- ⚠️ Ensure your VM is configured correctly as it will be evaluated based on the criteria listed above.
+- 📁 **Submit**: Only a `signature.txt` file in the root of your repository.
+- 📝 **Content**: The file should contain the SHA-1 signature of your virtual disk.
+- ⚠️ **Important**: Ensure your VM is configured correctly as it will be evaluated based on the criteria listed above.
 
 ## 📚 Resources
 
-- [Debian Documentation](https://www.debian.org/doc/)
-- [Rocky Linux Documentation](https://docs.rockylinux.org/)
-- [LVM Guide](https://www.tldp.org/HOWTO/LVM-HOWTO/)
-- [UFW Documentation](https://help.ubuntu.com/community/UFW)
+- 📘 [Debian Documentation](https://www.debian.org/doc/)
+- 📙 [Rocky Linux Documentation](https://docs.rockylinux.org/)
+- 📗 [LVM Guide](https://www.tldp.org/HOWTO/LVM-HOWTO/)
+- 📕 [UFW Documentation](https://help.ubuntu.com/community/UFW)
 
 ---
 
-Feel free to contribute to this project by submitting issues or pull requests!
+Feel free to contribute to this project by submitting issues or pull requests! 😊
 
 🛡️ **Born2BeRoot** - © 42 School, 2024
-
----
