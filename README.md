@@ -1,27 +1,26 @@
-### README.md for Born2BeRoot
+---
 
-```markdown
 # 🛡️ Born2BeRoot
 
 ## 📝 Project Overview
 
-Born2BeRoot is a system administration project from 42 School designed to introduce students to virtualization and server configuration. You will set up your first virtual machine following strict guidelines, using either VirtualBox or UTM. By the end of the project, you will be able to configure your own operating system with a set of stringent security rules.
+**Born2BeRoot** is a system administration project from 42 School designed to introduce students to virtualization and server configuration. You will set up your first virtual machine following strict guidelines, using either VirtualBox or UTM. By the end of the project, you will be able to configure your own operating system with a set of stringent security rules.
 
 ## 📋 Table of Contents
 
-1. [Pre-requisites](#pre-requisites)
-2. [Project Structure](#project-structure)
-3. [Mandatory Part](#mandatory-part)
-4. [Bonus Part](#bonus-part)
-5. [Scripts](#scripts)
-6. [Project Delivery and Evaluation](#project-delivery-and-evaluation)
-7. [Resources](#resources)
+1. [Pre-requisites](#️-pre-requisites)
+2. [Project Structure](#️-project-structure)
+3. [Mandatory Part](#️-mandatory-part)
+4. [Bonus Part](#️-bonus-part)
+5. [Scripts](#️-scripts)
+6. [Project Delivery and Evaluation](#️-project-delivery-and-evaluation)
+7. [Resources](#️-resources)
 
 ## ⚙️ Pre-requisites
 
-- VirtualBox or UTM (if VirtualBox doesn't work)
-- Latest stable version of **Debian** or **Rocky Linux**
-- Basic understanding of Linux command line and system administration
+- 🖥️ VirtualBox or UTM (if VirtualBox doesn't work)
+- 🛠️ Latest stable version of **Debian** or **Rocky Linux**
+- 📚 Basic understanding of Linux command line and system administration
 
 ## 🏗️ Project Structure
 
@@ -39,8 +38,8 @@ Born2BeRoot is a system administration project from 42 School designed to introd
    - Create at least 2 encrypted partitions using LVM.
 
 3. **Security Policies**:
-   - Strong password policy (minimum length, expiration, complexity).
-   - Implement and configure `sudo` with a set of specific rules.
+   - Implement a strong password policy (minimum length, expiration, complexity).
+   - Configure `sudo` with specific rules.
    - Install and configure the SSH service on port `4242` with restricted root access.
 
 4. **Firewall**:
@@ -109,9 +108,9 @@ echo "#Sudo : $sudo_commands cmd"
 
 ## 🚀 Project Delivery and Evaluation
 
-- Submit only a `signature.txt` file in the root of your repository.
-- This file should contain the SHA-1 signature of your virtual disk.
-- Ensure your VM is configured correctly as it will be evaluated based on the criteria listed above.
+- 📁 Submit only a `signature.txt` file in the root of your repository.
+- 📝 This file should contain the SHA-1 signature of your virtual disk.
+- ⚠️ Ensure your VM is configured correctly as it will be evaluated based on the criteria listed above.
 
 ## 📚 Resources
 
@@ -125,4 +124,5 @@ echo "#Sudo : $sudo_commands cmd"
 Feel free to contribute to this project by submitting issues or pull requests!
 
 🛡️ **Born2BeRoot** - © 42 School, 2024
-```
+
+---
