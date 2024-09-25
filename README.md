@@ -1,5 +1,3 @@
-Certainly! I’ll integrate the relevant and useful code snippets from your notes into the README for the **Born2BeRoot** project, specifically within the **Scripts** section where the `monitoring.sh` script is described. This will provide a more comprehensive guide on system monitoring and command usage.
-
 ---
 
 # 🛡️ **Born2BeRoot**
