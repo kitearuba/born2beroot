@@ -1,4 +1,3 @@
----
 
 # 🛡️ **Born2BeRoot**
 
@@ -165,11 +164,13 @@ The **Born2BeRoot** project is an excellent opportunity to deepen your understan
 
 Good luck, and happy coding! 🚀
 
-## 👨‍💻 Author
+## 👨‍💻 **Author**
 
-- **Author**: [Your Name]
-- **42 School**: Your Campus (e.g., 42 Barcelona)
-- **GitHub Profile**: [Your GitHub Profile Link]
+**chrrodri**  
+_42 Barcelona_
+
+[GitHub Profile](https://github.com/kitearuba)
+
 
 Feel free to reach out for collaboration or any questions regarding this project! 😊
 
