@@ -1,3 +1,6 @@
+Certainly! I’ll integrate the relevant and useful code snippets from your notes into the README for the **Born2BeRoot** project, specifically within the **Scripts** section where the `monitoring.sh` script is described. This will provide a more comprehensive guide on system monitoring and command usage.
+
+---
 
 # 🛡️ **Born2BeRoot**
 
@@ -103,56 +106,103 @@ This project emphasizes practical experience in system administration by requiri
 
 ## 🖥️ Scripts
 
-### Monitoring Script Example
+### Monitoring Script: `monitoring.sh`
 
-The `monitoring.sh` script provides essential system information at regular intervals.
+The `monitoring.sh` script provides essential system information at regular intervals using the `wall` command. This script will help monitor the system's performance and status.
+
+#### Script Overview
 
 ```bash
 #!/bin/bash
 # Simple monitoring script to display system information every 10 minutes
 
+# Get system architecture and kernel version
 architecture=$(uname -a)
+
+# Count physical and virtual CPUs
 cpu_physical=$(grep "physical id" /proc/cpuinfo | wc -l)
 cpu_virtual=$(grep "processor" /proc/cpuinfo | wc -l)
-ram_usage=$(free --mega | awk '$1 == "Mem:" {printf "%.2f%%\n", $3/$2 * 100}')
-disk_usage=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{total+=$3} END {print total}')
-cpu_load=$(vmstat 1 2 | tail -1 | awk '{print $15}')
-last_boot=$(who -b | awk '{print $3 " " $4}')
-lvm_use=$(lsblk | grep -q lvm && echo "Yes" || echo "No")
-tcp_connections=$(ss -ta | grep ESTAB | wc -l)
+
+# Get RAM usage details
+ram_total=$(free --mega | awk '$1 == "Mem:" {print $2}')
+ram_used=$(free --mega | awk '$1 == "Mem:" {print $3}')
+ram_usage=$(free --mega | awk '$1 == "Mem:" {printf "%.2f%%", $3/$2*100}')
+
+# Disk usage excluding /boot
+disk_usage=$(df -m --output=source,used | awk '/^\/dev\// && !/boot/ {total += $2} END {printf "%.2fGB", total/1024}')
+
+# Current CPU load percentage
+cpu_load=$(vmstat 1 2 | tail -1 | awk '{printf "%.2f%%", 100-$15}')
+
+# Last boot time
+last_boot=$(who -b | awk '$1 == "system" {print $3 " " $4}')
+
+# Check if LVM is active
+lvm_status=$(lsblk | grep -q lvm && echo "Yes" || echo "No")
+
+# Active TCP connections
+tcp_connections=$(ss -ta | awk '$1 ~ /ESTAB/ {total += 1} END {print total}')
+
+# Unique logged-in users count
 user_log=$(who | awk '{print $1}' | sort | uniq | wc -l)
+
+# IP and MAC address
 ip=$(hostname -I)
 mac=$(ip link show | grep link/ether | awk '{print $2}')
+
+# Count of sudo commands executed
 sudo_commands=$(grep -c "COMMAND" /var/log/sudo/sudo.log)
 
-echo "#Architecture: $architecture"
-echo "#CPU physical: $cpu_physical"
-echo "#vCPU: $cpu_virtual"
-echo "#Memory Usage: $ram_usage"
-echo "#Disk Usage: $disk_usage"
-echo "#CPU load: $cpu_load"
-echo "#Last boot: $last_boot"
-echo "#LVM use: $lvm_use"
-echo "#TCP Connections: $tcp_connections"
-echo "#User log: $user_log"
-echo "#Network: IP $ip ($mac)"
-echo "#Sudo : $sudo_commands cmd"
+# Display information using wall
+wall "
+#Architecture: $architecture
+#CPU physical: $cpu_physical
+#vCPU: $cpu_virtual
+#Memory Usage: $ram_used/$ram_total MB ($ram_usage)
+#Disk Usage: $disk_usage
+#CPU Load: $cpu_load
+#Last Boot: $last_boot
+#LVM Active: $lvm_status
+#TCP Connections: $tcp_connections
+#Logged-in Users: $user_log
+#Network: IP $ip (MAC $mac)
+#Sudo Commands: $sudo_commands cmd
+"
 ```
+
+### Explanation of Key Commands
+
+- **System Information**:
+  - `uname -a`: Displays the architecture and kernel version of the operating system.
+  - `grep "physical id" /proc/cpuinfo | wc -l`: Counts the number of physical CPUs.
+  - `grep "processor" /proc/cpuinfo | wc -l`: Counts the number of virtual CPUs.
+  
+- **Memory and Disk Usage**:
+  - `free --mega`: Provides RAM usage in megabytes.
+  - `df -m --output=source,used`: Displays disk usage in megabytes.
+
+- **CPU Load**:
+  - `vmstat 1 2 | tail -1 | awk '{printf "%.2f%%", 100-$15}'`: Calculates the current CPU load percentage.
+
+- **LVM Status**:
+  - `lsblk | grep -q lvm && echo "Yes" || echo "No"`: Checks if LVM is active.
+
+- **Active Connections**:
+  - `ss -ta | awk '$1 ~ /ESTAB/ {total += 1} END {print total}'`: Counts the number of active TCP connections.
+
+- **Sudo Command Count**:
+  - `grep -c "COMMAND" /var/log/sudo/sudo.log`: Counts the number of sudo commands executed.
 
 ## 🚀 Project Delivery and Evaluation
 
 - 📁 **Submit**: Only a `signature.txt` file in the root of your repository.
 - 📝 **Content**: The file should contain the SHA-1 signature of your virtual disk.
-- ⚠️ **Important**: Ensure your VM is configured correctly as it will be evaluated based on the criteria listed above.
+- ⚠️ **Important**: Ensure your VM is configured correctly as it will be evaluated based on the
+
+ criteria listed above.
 
 ## 📚 Resources
 
-### Summary of Enhancements:
-1. **Conclusion**: Added a section summarizing the project’s benefits and skills gained.
-2. **Author Section**: Included a dedicated section for author information and contact.
-3. **Consistent Layout**: Maintained a clear, structured format throughout the README.
-
-This README now has a comprehensive and professional feel, similar to the `ft_printf` style, while being tailored to the **Born2BeRoot** project. Feel free to modify the author details and personalize the content as needed!
 - 📘 [Debian Documentation](https://www.debian.org/doc/)
 - 📙 [Rocky Linux Documentation](https://docs.rockylinux.org/)
 - 📗 [LVM Guide](https://www.tldp.org/HOWTO/LVM-HOWTO/)
@@ -163,6 +213,7 @@ This README now has a comprehensive and professional feel, similar to the `ft_pr
 The **Born2BeRoot** project is an excellent opportunity to deepen your understanding of system administration, virtualization, and security. By configuring your own server from scratch and adhering to strict security policies, you will gain invaluable hands-on experience that is essential for any aspiring system administrator. Completing this project will not only equip you with practical skills but also prepare you for more advanced topics in system and network administration.
 
 Good luck, and happy coding! 🚀
+
 
 ## 👨‍💻 **Author**
 
